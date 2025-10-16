@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     int health = 10;
     public GameObject fireballPrefab;
     public Transform attackPoint;
+    private int coins;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,5 +29,12 @@ public class Player : MonoBehaviour
         
         health -= damage;
         print("Здоровье игрока: " + health);
+
+    }
+    public void CollectCoins()
+    {
+
+        coins++;
+        print ("Собранные монетки: " +  coins);
     }
 }
