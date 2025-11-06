@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
     public int minute;
     public float second;
+    public TextMeshProUGUI timerText;
     
     void Update()
     {
@@ -19,11 +21,13 @@ public class Timer : MonoBehaviour
                 second += 59;
                 minute--;
             }
+            else
+            {
+                int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+                SceneManager.LoadScene(sceneIndex);
+            }
         }
-        else
-        {
-            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.LoadScene(sceneIndex); 
-        }
+        int roundSecond = Mathf.RoundToInt(second);
+        timerText.text = minute + ":" + roundSecond;
     }
 }
